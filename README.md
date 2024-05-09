@@ -7,31 +7,31 @@ Admins are given the "Admin" claim which will allow these users to access resour
 However, Azure AD can also be used instead of AD B2C, as the setup is somewhat similar requiring only a few tweaks if this was to be used within a proper organisation. 
 The login capabilities would also be changed so that users can login with their company email account instead of creating a login on the website.
 
-Home Page
+This is a practice project based on Tim Corey's course on C# Application Development.
+
+1. Home Page: This will allow all users to see other people's suggestion.
 
 ![Index](https://github.com/Franco-Diaz-Licham/SuggestionsApp/assets/138960498/263f4ebd-a894-4c11-b97d-a3c2035e7da4)
 
-Approvals
+2. Admin Approval Page: where only admin users have access to. Admins will be able to make small edits and approve suggestions.
 
 ![Approval](https://github.com/Franco-Diaz-Licham/SuggestionsApp/assets/138960498/9dc0e905-d83e-467e-b46e-93a6ee41aba1)
 
-Details
+3. Suggestion Details Page: where a any user can see the full details of the suggestion.
 
 ![Details](https://github.com/Franco-Diaz-Licham/SuggestionsApp/assets/138960498/c9a9e915-671b-4cc4-9849-f15411e5f236)
 
-Suggest
+4. Create a Suggestion Page: where a user can submit a suggestion. 
 
 ![Suggest](https://github.com/Franco-Diaz-Licham/SuggestionsApp/assets/138960498/428b191b-677e-455b-b5df-aa499748abc8)
 
-Profile
+5. Profile Page: users can find all their submitted (whether approved or rejected) suggestions and also be able to edit their profile.
 
 ![Profile](https://github.com/Franco-Diaz-Licham/SuggestionsApp/assets/138960498/e2192433-5785-484c-8561-04b0ce85449a)
 
-
-Login:
+6. Login Page: users can create an account and login to the website to access resources whidden behind a login/
 
 ![Login](https://github.com/Franco-Diaz-Licham/SuggestionsApp/assets/138960498/9f4b7504-93b7-44f7-9369-40754599bf79)
-
 
 Future improvements include:
 1.	Introducing other departments.
