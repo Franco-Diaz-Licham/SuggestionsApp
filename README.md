@@ -7,7 +7,7 @@ Admins are given the "Admin" claim which will allow these users to access resour
 However, Azure AD can also be used instead of AD B2C, as the setup is somewhat similar requiring only a few tweaks if this was to be used within a proper organisation. 
 The login capabilities would also be changed so that users can login with their company email account instead of creating a login on the website.
 
-This is a practice project based on Tim Corey's course on C# Application Development.
+The website has the following pages. Some are public and some are hidden behind a login, and some only admin users can access. The pages are as follows:
 
 1. Home Page: This will allow all users to see other people's suggestion.
 
@@ -37,3 +37,4 @@ Future improvements include:
 1.	Introducing other departments.
 2.	User interface for suggetion categories.
 
+This is a practice project based on Tim Corey's course on C# Application Development.
