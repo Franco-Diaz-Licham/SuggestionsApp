@@ -1,0 +1,77 @@
+﻿@page "/create"
+@attribute [Authorize]
+
+<h1 class="page-heading text-uppercase mb-4">
+    Make A Suggestion
+</h1>
+<div class="row justify-content-center center-form">
+    <div class="col-xl-8 col-lg-10 form-layout">
+        <div class="close-button-section">
+            <button @onclick="ClosePage" class="btn btn-close" />
+        </div>
+        @if (Categories is not null)
+        {
+            <EditForm Model="Suggestion" OnValidSubmit="CreateSuggestion">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                <div class="input-section">
+                    <label class="form-label fw-bold text-uppercase"
+                           for="suggestion-text">
+                        Suggestion
+                    </label>
+                    <div class="input-description">
+                        Short title of the suggestion you want to make.
+                    </div>
+                    <InputTextArea @bind-Value="Suggestion.Suggestion"
+                                   class="form-control rounded-control"
+                                   id="suggestion-text"
+                                   placeholder="Title"
+                                   rows="2" />
+                </div>
+                <div class="input-section">
+                    <label class="form-label fw-bold text-uppercase"
+                           for="category">
+                        Category
+                    </label>
+                    <div class="input-description">
+                        Choose one category.
+                    </div>
+                    <div class="col-lg-12">
+                        <CustomInputRadioGroup @bind-Value="Suggestion.CategoryId"
+                                               id="category">
+                            @foreach (var c in Categories)
+                            {
+                                <div class="radio-item-group">
+                                    <InputRadio Value="@c.Id" id="@c.Id" />
+                                    <label for="@c.Id">
+                                        @c.CategoryName - @c.CategoryDescription
+                                    </label>
+                                </div>
+                            }
+                        </CustomInputRadioGroup>
+                    </div>
+                </div>
+                <div class="input-section">
+                    <label class="form-label fw-bold text-uppercase"
+                           for="description-text">
+                        Description
+                    </label>
+                    <div class="input-description">
+                        Briefly describe your suggestion.
+                    </div>
+                    <InputTextArea @bind-Value="Suggestion.Description"
+                                   class="form-control rounded-control"
+                                   id="description-text"
+                                   placeholder="Description"
+                                   rows="5" />
+                </div>
+                <div class="center-children">
+                    <button class="suggest-btn btn btn-outline-light btn-lg"
+                            type="submit">
+                        Suggest
+                    </button>
+                </div>
+            </EditForm>
+        }
+    </div>
+</div>

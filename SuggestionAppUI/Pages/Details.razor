@@ -1,0 +1,115 @@
+﻿@page "/details/{id}"
+
+<h1 class="page-heading text-uppercase mb-4">Suggestion Details</h1>
+<div class="row justify-content-center detail-form">
+    <div class="col-xl-8 col-lg-8 form-layout">
+        @if(Suggestion is not null)
+        {
+            <div class="row suggestion-detail-row">
+                <div class="col-11 suggestion-detail">
+                    <div>
+                        <div class="@GetVoteClass()" @onclick="VoteUp">
+                            <div class="text-uppercase">@GetUpvoteTopText()</div>
+                            <span class="oi oi-caret-top detail-upvote" />
+                            <div class="text-uppercase">@GetUpBoteBottomText()</div>
+                        </div>
+                        <div class="suggestion-detail-date">
+                            <div>@Suggestion.DateCreated.ToString("dd-MM-yyyy")</div>
+                        </div>
+                    </div>
+                    <div class="suggestion-detail-text">
+                        <div class="fw-bold mb-2 suggestion-detail-suggestion">@Suggestion.Suggestion</div>
+                        <div class="mb-2 suggestion-detail-author">@Suggestion.Author.DisplayName</div>
+                        <div class="mb-2 d-none d-md-block">@Suggestion.Description</div>
+                        <div class="suggestion-entry-text-category d-none d-md-block">@Suggestion.Category.CategoryName</div>
+                    </div>
+                </div>
+                <div class="col-1 close-button-section">
+                    <div class="d-block">
+                        <button class="btn btn-close" @onclick="ClosePage" />
+                    </div>
+                </div>
+            </div>
+            <div class="d-block d-md-none">
+                <div class="suggestion-detail-text">
+                    <div class="mb-2">@Suggestion.Description</div>
+                    <div class="suggestion-entry-text-category">@Suggestion.Category.CategoryName</div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@if(Suggestion?.SuggestionStatus is not null)
+{
+    <div class="row justify-content-center detail-form">
+        <div class="col-xl-8 col-lg-10 suggestion-results form-layout">
+            <div class="@GetStatusClass()"/>
+            <div class="suggestion-detail-status-section">
+                <div class="suggestion-detail-status fw-bold mb-2 suggestion-detail-suggestion">
+                    @Suggestion.SuggestionStatus.StatusName
+                </div>
+                <div class="suggestion-detail-owner-notes">
+                    @((MarkupString)Suggestion.OwnerNotes)
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@if (Suggestion is not null)
+{
+    <AuthorizeView Policy="Admin">
+        <div class="row justify-content-center detail-form">
+            <div class="col-xl-8 col-lg-8 form-layout admin-details">
+                <div>
+                    <div class="suggestion-detail-status fw-bold mb-2 suggestion-detail-suggestion">
+                        Set Status
+                    </div>
+                    @if (string.IsNullOrWhiteSpace(SettingStatus))
+                    {
+                        <div class="admin-set-statuses">
+                            <button @onclick="@(() => SettingStatus = "completed")"
+                                    class="btn suggestion-entry-text-category btn-archive btn-status-completed">
+                                completed
+                            </button>
+                            <button @onclick="@(() => SettingStatus = "watching")"
+                                    class="btn suggestion-entry-text-category btn-archive btn-status-watching">
+                                watching
+                            </button>
+                            <button @onclick="@(() => SettingStatus = "addressing")"
+                                    class="btn suggestion-entry-text-category btn-archive btn-status-addressing">
+                                addressing
+                            </button>
+                            <button @onclick="@(() => SettingStatus = "dismissed")"
+                                    class="btn suggestion-entry-text-category btn-archive btn-status-dismissed">
+                                dismissed
+                            </button>
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <textarea @bind="Suggestion.OwnerNotes"
+                                      class="form-control rounded-control"
+                                      type="text"
+                                      placeholder="Comment"
+                                      aria-label="Content Url"
+                                      rows="5" />
+                        </div>
+                        <div class="suggestion-entry-bottom mt-2">
+                            <button @onclick="CompleteSetStatus"
+                                    class="btn btn-archive btn-archive-confirm">
+                                Confirm
+                            </button>
+                            <button @onclick="(() => SettingStatus = null)"
+                                    class="btn btn-archive btn-archive-reject">
+                                Cancel
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </AuthorizeView>
+}
