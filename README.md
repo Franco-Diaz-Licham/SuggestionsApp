@@ -1,3 +1,4 @@
+# Description
 The suggestion site application is a .NET 6 Blazor Server web application that allows users to put through suggestion requests for a given department within a company. 
 It allows users to create an account for the website, make suggestions, see their approval status and monitor how many other users voted their suggestion up. Users are either basic users or Admins.
 
@@ -7,7 +8,8 @@ Admins are given the "Admin" claim which will allow these users to access resour
 However, Azure AD can also be used instead of AD B2C, as the setup is somewhat similar requiring only a few tweaks if this was to be used within a proper organisation. 
 The login capabilities would also be changed so that users can login with their company email account instead of creating a login on the website.
 
-The website has the following pages. Some are public and some are hidden behind a login, and some only admin users can access. The pages are as follows:
+# Overview
+The website has both public pages and some that are hidden behind a login, while some only able to be accessed by admin users. The pages are as follows:
 
 1. Home Page: This will allow all users to see other people's suggestion.
 
